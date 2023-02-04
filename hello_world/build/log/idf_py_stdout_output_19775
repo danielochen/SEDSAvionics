@@ -1,0 +1,29 @@
+[1/5] cd /Users/danielchen/Documents/ESP32/hello_world/build/esp-idf/esptool_py && /Users/danielchen/.espressif/python_env/idf5.1_py3.9_env/bin/python /Users/danielchen/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/danielchen/Documents/ESP32/hello_world/build/partition_table/partition-table.bin /Users/danielchen/Documents/ESP32/hello_world/build/hello_world.bin
+hello_world.bin binary size 0x313d0 bytes. Smallest app partition is 0x100000 bytes. 0xcec30 bytes (81%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /Users/danielchen/Documents/ESP32/hello_world/build/bootloader/esp-idf/esptool_py && /Users/danielchen/.espressif/python_env/idf5.1_py3.9_env/bin/python /Users/danielchen/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/danielchen/Documents/ESP32/hello_world/build/bootloader/bootloader.bin
+Bootloader binary size 0x66c0 bytes. 0x940 bytes (8%) free.
+[2/3] cd /Users/danielchen/esp/esp-idf/components/esptool_py && /usr/local/Cellar/cmake/3.24.2/bin/cmake -D IDF_PATH=/Users/danielchen/esp/esp-idf -D "SERIAL_TOOL=/Users/danielchen/.espressif/python_env/idf5.1_py3.9_env/bin/python;;/Users/danielchen/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/Users/danielchen/Documents/ESP32/hello_world/build -P /Users/danielchen/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool esp32 -p /dev/cu.usbserial-0001 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 hello_world.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.5.dev2
+Serial port /dev/cu.usbserial-0001
+Connecting.......
+Chip is ESP32-D0WDQ6 (revision v1.0)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 40:91:51:ab:2e:b4
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x00041fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Compressed 26304 bytes to 16379...
+
+A fatal error occurred: Packet content transfer stopped (received 8 bytes)
+FAILED: CMakeFiles/flash /Users/danielchen/Documents/ESP32/hello_world/build/CMakeFiles/flash 
+cd /Users/danielchen/esp/esp-idf/components/esptool_py && /usr/local/Cellar/cmake/3.24.2/bin/cmake -D IDF_PATH=/Users/danielchen/esp/esp-idf -D "SERIAL_TOOL=/Users/danielchen/.espressif/python_env/idf5.1_py3.9_env/bin/python;;/Users/danielchen/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/Users/danielchen/Documents/ESP32/hello_world/build -P /Users/danielchen/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+ninja: build stopped: subcommand failed.
